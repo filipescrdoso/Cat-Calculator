@@ -36,14 +36,14 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    margin-top: -20px;
+    margin-top: -40px;
 }
 
 .cat {
     box-sizing: border-box;
-    transform: scale(0.6);
     position: absolute;
     z-index: -1;
+    transform: scale(.45);
 }
 
 .ellipse-fit {
@@ -69,16 +69,16 @@ body {
 .calculator-base {
     background-color: var(--color-lightGray);
     border-radius: 50px;
-    border: 20px solid #f4f4f4;
+    border: 10px solid #f4f4f4;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .2);
-    margin-top: 200px;
+    margin-top: 185px;
 }
 
 @media screen and (orientation: portrait) {
 
     .calculator-base {
-        min-height: 455px;
-        min-width: 270px;
+        min-height: 390px;
+        min-width: 255px;
     }
 
 }
