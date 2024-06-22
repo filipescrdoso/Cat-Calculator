@@ -1,12 +1,10 @@
 @charset "UTF-8";
 
 .cat {
-    top: 15%;
-    transform: scale(.7);
+    transform: scale(.8);
 }
 
 .calculator-base {
-    top: 37%;
-    width: 911px;
-    height: 355px;
+    min-width: 911px;
+    min-height: 355px;
 }

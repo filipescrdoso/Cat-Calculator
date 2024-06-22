@@ -33,18 +33,17 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
     flex-direction: column;
-    height: 100%;
     width: 100%;
+    margin-top: -20px;
 }
 
 .cat {
+    box-sizing: border-box;
+    transform: scale(0.6);
     position: absolute;
-    top: 3%;
-    transform: scale(0.75);
+    z-index: -1;
 }
 
 .ellipse-fit {
@@ -68,33 +67,31 @@ body {
 }
 
 .calculator-base {
-    position: absolute;
     background-color: var(--color-lightGray);
     border-radius: 50px;
     border: 20px solid #f4f4f4;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .2);
+    margin-top: 200px;
 }
 
 @media screen and (orientation: portrait) {
-    
+
     .calculator-base {
-        top: 26%;
-        height: 600px;
-        width: 356px;
+        min-height: 455px;
+        min-width: 270px;
     }
 
 }
 
 @media screen and (orientation: landscape) {
-
-    .cat {
-        top: 18%;
-    }
     
+    .cat {
+        transform: scale(.55);
+    }
+
     .calculator-base {
-        top: 40%;
-        height: 335px;
-        width: 888px;
+        height: 216px;
+        width: 554px;
     }
     
 }
