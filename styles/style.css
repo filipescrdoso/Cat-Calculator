@@ -86,12 +86,14 @@ body {
 @media screen and (orientation: landscape) {
     
     .cat {
-        transform: scale(.55);
+        transform: scale(.4);
     }
 
     .calculator-base {
-        height: 216px;
-        width: 554px;
+        height: 180px;
+        width: 570px;
+        margin-top: 167px;
+        box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, .2);
     }
     
 }
