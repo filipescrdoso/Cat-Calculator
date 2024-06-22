@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@media screen and (orientation: portrait) {
+    body{
+        background: red;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    body{
+        background: greenyellow;
+    }
+}
