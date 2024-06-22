@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
-body{
-    background: blue;
+.cat {
+    top: 15%;
+    transform: scale(.7);
+}
+
+.calculator-base {
+    top: 37%;
+    width: 911px;
+    height: 355px;
 }
