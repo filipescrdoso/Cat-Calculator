@@ -1,10 +1,112 @@
 @charset "UTF-8";
 
+/* Style for big devices */
+
+.container {
+    padding: 50px 0px;
+}
+
 .cat {
-    transform: scale(.8);
+    transform: scale(.58);
 }
 
 .calculator-base {
-    min-width: 911px;
-    min-height: 355px;
+    margin-top: 200px;
+    border: 13px solid #f4f4f4;
+    box-shadow: 0px 8px 10px 5px rgba(0, 0, 0, .1);
+}
+
+/* Based on the class "portrait" or "landscape" from the div: "calculator-base" of the HTML file */
+/* Version for big devices in portrait */
+
+.calculator-base.portrait .screen {
+    height: 107.9px;
+    width: 296.4px;
+    margin-top: 13px;
+}
+
+.calculator-base.portrait button {
+    height: 67px;
+    width: 75px;
+    font-size: 25px;
+}
+
+.calculator-base.portrait > .extra {
+    display: none;
+}
+
+.calculator-base.portrait {
+    height: 507px;
+    width: 331.5px;
+    grid-template-columns: repeat(4, 82.9px);
+    grid-template-rows: 144.85px 72.4px 290px;
+    grid-template-areas: 
+    "screen screen screen screen"
+    "cal1 cal1 cal1 cal1"
+    "numb numb numb cal2"; 
+}
+
+.calculator-base.portrait .number-buttons {
+    align-self: top;
+    margin: 0px 0px 0px 5px;
+}
+
+.calculator-base.portrait .number-buttons > button:nth-child(10) {
+    border-radius: 0px 0px 0px 10px;
+}
+
+.calculator-base.portrait .calc-buttons.group1 {
+    gap: 3.1px;
+    margin: 0px 0px 2px 0px;
+    align-self: flex-end;
+}
+
+.calculator-base.portrait .calc-buttons.group1 > button:first-child {
+    background-color: var(--color-red);
+    border-radius: 10px 0px 0px 0px;
+}
+.calculator-base.portrait .calc-buttons.group1 > button:last-child {
+    border-radius: 0px 10px 0px 0px;
+}
+
+.calculator-base.portrait .calc-buttons.group2 {
+    gap: 3px;
+    margin: 0px 0px 0px -2.7px;
+    align-self: baseline;
+}
+
+.calculator-base.portrait .calc-buttons.group2 > button:first-child {
+    border-radius: 0px;
+}
+
+/* Version for big devices in landscape */
+
+.calculator-base.landscape > .extra {
+    display: flex;
+}
+
+.calculator-base.landscape {
+    height: 234px;
+    width: 715px;
+    margin-top: 200px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, .2);
+    grid-template-columns: repeat(10, 71.5px);
+    grid-template-rows: repeat(4, 58.5px);
+    grid-template-areas: 
+    "ext1 ext2 screen screen screen screen screen screen cal1 cal2"
+    "ext1 ext2 screen screen screen screen screen screen cal1 cal2"
+    "ext1 ext2 numb numb numb numb numb numb cal1 cal2"
+    "ext1 ext2 numb numb numb numb numb numb cal1 cal2";
+}
+
+.calculator-base.landscape .screen {
+    height: 94.9px;
+    width: 391.3px; 
+    margin-top: 10px;
+}
+
+.calculator-base.landscape button {
+    height: 54px;
+    width: 64px;
+    font-size: 25px;
 }

@@ -7,6 +7,8 @@
     --color-lightGray: #d9d9d9;
     --color-darkGray: #252525;
     --color-red: #9e0101;
+    --color-contrast: #000000;
+    --color-contrast2: #ffffff;
 }
 
 .dark-mode {
@@ -14,6 +16,8 @@
     --color-white: #252525;
     --color-lightGray: #616161;
     --color-darkGray: #1a1a1a;
+    --color-contrast: #ffffff;
+    --color-contrast2: #000000;
 }
 
 * {
@@ -39,11 +43,13 @@ body {
     margin-top: -40px;
 }
 
+/* Styling the Cat */
 .cat {
     box-sizing: border-box;
     position: absolute;
     z-index: -1;
     transform: scale(.45);
+    transition: transform .2s ease;
 }
 
 .ellipse-fit {
@@ -65,25 +71,217 @@ body {
     transform: translate(-50%, -25%);
     z-index: -1;
 }
+/* End of styling the Cat */
 
+/* Styling the Calculator */
 .calculator-base {
     background-color: var(--color-lightGray);
-    border-radius: 50px;
+    border-radius: 28px;
     border: 10px solid #f4f4f4;
-    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .2);
+    box-shadow: 0px 10px 10px .5px rgba(0, 0, 0, .2);
     margin-top: 185px;
+    transition: all .2s ease;
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
+.screen {
+    height: 83px;
+    width: 228px;
+    margin: 13px auto 13px auto;
+    background-color: #ffffff;
+    box-shadow: inset 0px 3px 7px 0.1px rgba(0, 0, 0, .4);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    grid-area: screen; /*Identifier for the grid-template-area in the respectives Media Querries*/
+}
+
+.screen input {
+    width: 100%;
+    padding: 0% 5%;
+    border: none;
+    box-sizing: border-box;
+    background-color: #ec303000;
+    text-align: right;
+    color: var(--color-contrast);
+    pointer-events: none;
+}
+
+.screen input.atualScreen {
+    padding: 0%;
+    margin: -20px 5px 0px 5px;
+    text-indent: 0px;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.previousScreen {
+    margin: 5px 5px 0px 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+button {
+    height: 50px;
+    width: 55px;
+    font-size: 25px;
+    border: none;
+    box-shadow: 0px 1px 2px 0.5px rgba(0, 0, 0, .2);
+    transition: background-color .2s ease;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/* Generical Numerical Buttons style */
+.number-buttons {
+    align-self: top;
+    margin-right: 4px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: end;
+    align-content: start;
+    gap: 3px;
+    grid-area: numb; /*Identifier for the grid-template-area in the respectives Media Querries*/
+}
+
+.number-buttons > button {
+    background-color: var(--color-white);
+    color: var(--color-contrast);
+}
+
+.number-buttons > button:hover {
+    background-color: rgba(0, 0, 0, .05);
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, .2);
+}
+.number-buttons > button:active {
+    background-color: rgba(0, 0, 0, .2);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .25);
+}
+
+.number-buttons > button:nth-child(10) {
+    border-radius: 0px 0px 0px 10px;
+}
+/* End of Numerical Buttons style */
+
+/* Generical Calculation Buttons style */
+.calc-buttons > button {
+    background-color: var(--color-darkGray);
+    color: #ffffff;
+    transition: background-color .2s ease;
+}
+
+.calc-buttons > button:hover {
+    background-color: #000000be;
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, .2);
+}
+.calc-buttons > button:active {
+    background-color: #1a1a1a;
+    box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, .2);
+}
+
+.calc-buttons.group1 {
+    align-self: top;
+    margin-left: 14px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-content: center;
+    gap: 3px;
+    align-self: center;
+    grid-area: cal1; /*Identifier for the grid-template-area in the respectives Media Querries*/
+}
+
+.calc-buttons.group1 > button:first-child {
+    background-color: var(--color-red);
+    border-radius: 10px 0px 0px 0px;
+}
+.calc-buttons.group1 > button:last-child {
+    border-radius: 0px 10px 0px 0px;
+}
+
+.calc-buttons.group2 {
+    align-self: top;
+    margin-right: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: start;
+    align-content: center;
+    gap: 3px;
+    align-self: top;
+    grid-area: cal2; /*Identifier for the grid-template-area in the respectives Media Querries*/
+}
+
+.calc-buttons.group2 > button:last-child {
+    background-color: var(--color-red);
+    border-radius: 0px 0px 10px 0px;
+}
+
+.calc-buttons.group2 > button:last-child:hover,
+.calc-buttons.group1 > button:first-child:hover {
+    background-color: #700000;
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, .2);
+}
+
+.calc-buttons.group2 > button:last-child:active,
+.calc-buttons.group1 > button:first-child:active {
+    background-color: #c70000;
+    box-shadow: 0px 1px 5px 1px rgba(255, 0, 0, 0.2);
+}
+
+.extra {
+    display: none;
+}
+
+.calc-buttons.group3 {
+    gap: 1px;
+    align-self: top;
+    justify-self: center;
+    grid-area: ext1; /*Identifier for the grid-template-area in the respectives Media Querries*/
+}
+
+.calc-buttons.group4 {
+    gap: 1px;
+    align-self: top;
+    justify-self: center;
+    grid-area: ext2; /*Identifier for the grid-template-area in the respectives Media Querries*/
+}
+/* End of Calculation Buttons style */
+/* End of styling the Calculator */
+
+
+/* Why do software developers prefer the dark? Because the light attracts bugs! */
+
+
+/* Styles for mobile devices in portrait*/
 @media screen and (orientation: portrait) {
 
     .calculator-base {
-        min-height: 390px;
-        min-width: 255px;
+        height: 390px;
+        width: 255px;    
+        grid-template-columns: 63px 63px 63px 63px;
+        grid-template-rows: 112px 56px 224px;
+        grid-template-areas: 
+        "screen screen screen screen"
+        "cal1 cal1 cal1 cal1"
+        "numb numb numb cal2"; 
     }
-
 }
 
+/* Styles for mobile devices in LANDSCAPE*/
 @media screen and (orientation: landscape) {
+
+    html::-webkit-scrollbar { 
+        display: none;
+    }
+
+    .container {
+        padding: 50px 0px;
+    }
     
     .cat {
         transform: scale(.4);
@@ -91,9 +289,94 @@ body {
 
     .calculator-base {
         height: 180px;
-        width: 570px;
+        width: 550px;
         margin-top: 167px;
         box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, .2);
+        grid-template-columns: repeat(10, 55px);
+        grid-template-rows: repeat(4, 45px);
+        grid-template-areas: 
+        "ext1 ext2 screen screen screen screen screen screen cal1 cal2"
+        "ext1 ext2 screen screen screen screen screen screen cal1 cal2"
+        "ext1 ext2 numb numb numb numb numb numb cal1 cal2"
+        "ext1 ext2 numb numb numb numb numb numb cal1 cal2";
+    }
+
+    .screen {
+        height: 73px; /* 1,2 de proporção */
+        width: 301px; /* 1,02 de proporção */
+        margin-top: 5px;
+    }
+
+    button {
+        height: 41.6px;
+        width: 49px;
+        font-size: 20px;
+    }
+
+    .number-buttons {
+        margin: 0px;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: top;
+    }
+
+    .number-buttons > button:nth-child(10) {
+        border-radius: 0px;
     }
     
+    .number-buttons > button:nth-child(10) {
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .calc-buttons.group1 {
+        margin: 0px 0px 0px 5px;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: center;
+        gap: 1px;
+    }
+
+    .calc-buttons.group1 > button:first-child {
+        border-radius: 0px 0px 0px 0px;
+    }
+    .calc-buttons.group1 > button:last-child {
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .calc-buttons.group2{
+        margin: 0px 5px 0px 0px;
+        flex-flow: row wrap;
+        justify-content: left;
+        align-content: center;
+        gap: 1px;
+    }
+
+    .calc-buttons.group2 > button:first-child {
+        border-radius: 0px 10px 0px 0px;
+    }
+
+    .extra {
+        display: flex;
+    }
+
+    .calc-buttons.group3 {
+        margin: 0px 0px 0px 5px;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .calc-buttons.group3 > button:first-child {
+        border-radius: 10px 0px 0px 0px;
+    }
+    .calc-buttons.group3 > button:last-child {
+        border-radius: 0px 0px 0px 10px;
+    }
+
+    .calc-buttons.group4{
+        margin: 0px 5px 0px 0px;
+        flex-flow: row wrap;
+        justify-content: left;
+        align-content: center;
+    }
 }

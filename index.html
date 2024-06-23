@@ -10,6 +10,8 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- Div for the Sete Cat's Head SVG -->
         <div class="cat">
             <svg width="337" height="144" viewBox="0 0 337 144" fill="none" xmlns="http://www.w3.org/2000/svg" id="ears">
                 <g id="Ears">
@@ -79,26 +81,62 @@
             </div>
         </div>
 
-        <div class="calculator-base">
+        <!-- Calculator start -->
+        <div class="calculator-base portrait">
+            <!-- The "portrait" class above, is here to make possible rotate the calculator even in big device, like desktops. Switch between "portrait" or "landscape" -->
+
             <div class="screen">
-
+                <input type="text" value="1 + 1 = " readonly class="previousScreen">
+                <input type="number" value="0" readonly class="atualScreen">
             </div>
+
+            <!-- Calculator Buttons -->
+
             <div class="number-buttons">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>+/-</button>
+                <button>0</button>
+                <button>.</button>
+            </div>
 
+            <div class="calc-buttons group1">
+                <button>AC</button>
+                <button>&larr;</button>
+                <button>%</button>
+                <button>&divide;</button>
             </div>
-            <div class="calc-buttons1">
+            
+            <div class="calc-buttons group2">
+                <button>&times;</button>
+                <button>-</button>
+                <button>+</button>
+                <button>=</button>
+            </div>
 
+            <div class="calc-buttons group3 extra">
+                <button>&Sqrt;</button>
+                <button>&UpArrow;</button>
+                <button>sin</button>
+                <button>tan</button>
             </div>
-            <div class="calc-buttons2">
 
-            </div>
-            <div class="calc-buttons3">
+            <div class="calc-buttons group4 extra">
+                <button>&pi;</button>
+                <button>!</button>
+                <button>cos</button>
+                <button>log</button>
 
-            </div>
-            <div class="calc-buttons4">
-                
-            </div>
         </div>
+        <!-- Calculator end -->
+
     </div>
 
 
