@@ -2,11 +2,8 @@ const body = document.getElementById('body');
 const calcBase = document.getElementById('calculator-base');
 const settingsBtn = document.getElementById("settings");
 const settingsMenu = document.getElementById("settingsMenu");
+const settingsMenuBG = document.getElementById("settingsMenuBG");
 const rotateBtn = document.getElementById("rotate");
-
-settingsBtn.addEventListener('click', () => {
-    settingsMenu.classList.toggle('active');
-})
 
 rotateBtn.addEventListener('click', () => {
     if (calcBase.classList.contains('portrait')) {
@@ -20,6 +17,11 @@ rotateBtn.addEventListener('click', () => {
 
 function showRotate() {
     rotateBtn.style.display === 'none' ? rotateBtn.style.display = 'block' : rotateBtn.style.display = 'none';
+}
+
+function showSettings() {
+    settingsMenu.classList.toggle('active');
+    settingsMenuBG.classList.toggle('active');
 }
 
 function setDarkMode() {

@@ -9,6 +9,7 @@
     --color-red: #9e0101;
     --color-contrast: #000000;
     --color-contrast2: #ffffff;
+    --settings-bg: rgba(0, 0, 0, .5);
 }
 
 .dark-mode {
@@ -18,6 +19,7 @@
     --color-darkGray: #1a1a1a;
     --color-contrast: #ffffff;
     --color-contrast2: #000000;
+    --settings-bg: rgba(0, 0, 0, .7);
 }
 
 * {
@@ -53,7 +55,7 @@ body {
 }
 
 .ellipse-fit {
-    background-color: #ffffff00;
+    background-color: inherit;
     height: 289px;
     width: 365px;
     border-radius: 50%;
@@ -267,7 +269,7 @@ button:active {
 /* End of styling the Calculator */
 
 span {
-    z-index: 10;
+    z-index: 5;
     float: right;
     color: var(--color-contrast);
     border: solid 3px var(--color-contrast);
@@ -293,7 +295,7 @@ span {
     cursor: pointer;
 }
 
-#settings:hover, #rotate:hover, #settings:focus, #rotate:focus {
+#settings:hover, #rotate:hover {
     transform: scale(1.1);
     rotate: 180deg;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .2);
@@ -304,19 +306,58 @@ span {
     color: var(--color-contrast2);
 }
 
+.settings-menu-bg {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--settings-bg);
+    height: 100%;
+    width: 100%;
+}
+
 .settings-menu {
     display: none;
     position: absolute;
+    z-index: 1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--color-white);
-    padding: 35px;
+    padding: 35px 25px;
     border-radius: 5px;
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, .3);
+    text-align: center;
 }
 
-.settings-menu.active{
+.settings-menu h3 {
+    color: var(--color-contrast);
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.line {
+    width: 100%;
+    height: 0.5px;
+    margin: 10px 0px 15px 0px;
+    background-color: var(--color-contrast);
+}
+
+.settings-menu label {
+    color: var(--color-contrast);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.settings-menu input {
+    height: 15px;
+    width: 15px;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .5);
+    background-color: var(--color-contrast);
+}
+
+.settings-menu.active, .settings-menu-bg.active{
     display: block;
 }
 

@@ -11,9 +11,22 @@
 </head>
 <body id="body">
 
-    <span class="material-symbols-outlined" id="settings" tabindex="1">
+    <span class="material-symbols-outlined" id="settings" onclick="showSettings()">
         settings
     </span>
+
+    <div class="settings-menu-bg" id="settingsMenuBG" onclick="showSettings()"></div>
+
+    <div class="settings-menu" id="settingsMenu">
+        <h3>Configurações:</h3>
+        <div class="line"></div>
+        <label for="dark-mode-input">Modo escuro:</label>
+        <input type="checkbox" name="dark-mode-input" id="dark-mode-input" onclick="setDarkMode()"><br>
+        <div class="rotate-input">
+            <label for="rotate-button-check">Botão de Rotação:</label>
+            <input type="checkbox" name="rotate-button-check" id="rotate-button-check" checked onclick="showRotate()"><br>
+        </div>
+    </div>
 
     <div class="container">
 
@@ -144,19 +157,9 @@
         <!-- Calculator end -->
     </div>
 
-    <span class="material-symbols-outlined" id="rotate" tabindex="1">
+    <span class="material-symbols-outlined" id="rotate">
         cached
     </span>
-
-    <div class="settings-menu" id="settingsMenu">
-        <label for="dark-mode-input">Modo escuro:</label>
-        <input type="checkbox" name="dark-mode-input" id="dark-mode-input" onclick="setDarkMode()"><br>
-
-        <div class="rotate-input">
-            <label for="rotate-button-check">Botão de Rotação:</label>
-            <input type="checkbox" name="rotate-button-check" id="rotate-button-check" onclick="showRotate()"><br>
-        </div>
-    </div>
 
     <script src="scripts/index.js"></script>
     <script src="scripts/cat.js"></script>
