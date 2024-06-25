@@ -7,14 +7,20 @@
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css" media="all">
     <link rel="stylesheet" href="styles/big-devices-style.css" media="screen and (min-width: 1024px)">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
-<body>
+<body id="body">
+
+    <span class="material-symbols-outlined" id="settings" tabindex="1">
+        settings
+    </span>
+
     <div class="container">
 
         <!-- Div for the Sete Cat's Head SVG -->
         <div class="cat">
             <svg width="337" height="144" viewBox="0 0 337 144" fill="none" xmlns="http://www.w3.org/2000/svg" id="ears">
-                <g id="Ears">
+                <g id="CatEars">
                 <g id="Ear2">
                 <mask id="mask0_29_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="212" y="0" width="125" height="140">
                 <path id="OutsideEar2" d="M333.318 4.97535C332.896 2.22886 330.27 0.407481 327.546 0.954983C284.615 9.58319 247.252 26.2766 215.298 44.3754C212.248 46.103 211.934 50.3548 214.668 52.5489L321.293 138.117C324.284 140.518 328.75 138.794 329.322 135.002C336.141 89.7967 339.436 44.8347 333.318 4.97535Z" fill="url(#paint0_linear_29_2)"/>
@@ -72,7 +78,7 @@
                     </g>
                     <path id="Nose" d="M323.83 264.883C325.432 266.963 328.568 266.963 330.17 264.883L337.631 255.19C339.656 252.56 337.781 248.75 334.461 248.75H319.539C316.219 248.75 314.344 252.56 316.369 255.19L323.83 264.883Z" fill="#8C5979"/>
                     </g>
-                    <g id="Eyes">
+                    <g id="Eyes" class="blink--anim">
                     <path id="Eye2" d="M363 207H399V241C399 250.941 390.941 259 381 259C371.059 259 363 250.941 363 241V207Z" fill="black"/>
                     <path id="Eye1" d="M255 207H291V241C291 250.941 282.941 259 273 259C263.059 259 255 250.941 255 241V207Z" fill="black"/>
                     </g>
@@ -82,12 +88,12 @@
         </div>
 
         <!-- Calculator start -->
-        <div class="calculator-base portrait">
+        <div class="calculator-base portrait" id="calculator-base">
             <!-- The "portrait" class above, is here to make possible rotate the calculator even in big device, like desktops. Switch between "portrait" or "landscape" -->
 
             <div class="screen">
-                <input type="text" value="1 + 1 = " readonly class="previousScreen">
-                <input type="number" value="0" readonly class="atualScreen">
+                <input type="text" value="1 + 1 = " readonly class="previousScreen" tabindex="-1">
+                <input type="number" value="0" readonly class="atualScreen" tabindex="-1">
             </div>
 
             <!-- Calculator Buttons -->
@@ -136,10 +142,23 @@
 
         </div>
         <!-- Calculator end -->
-
     </div>
 
+    <span class="material-symbols-outlined" id="rotate" tabindex="1">
+        cached
+    </span>
+
+    <div class="settings-menu" id="settingsMenu">
+        <label for="dark-mode-input">Modo escuro:</label>
+        <input type="checkbox" name="dark-mode-input" id="dark-mode-input" onclick="setDarkMode()"><br>
+
+        <div class="rotate-input">
+            <label for="rotate-button-check">Botão de Rotação:</label>
+            <input type="checkbox" name="rotate-button-check" id="rotate-button-check" onclick="showRotate()"><br>
+        </div>
+    </div>
 
     <script src="scripts/index.js"></script>
+    <script src="scripts/cat.js"></script>
 </body>
 </html>

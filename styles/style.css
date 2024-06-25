@@ -63,6 +63,13 @@ body {
 
 #CatFace {
     transform: translate(-22.5%, -17%);
+    cursor: pointer;
+}
+
+#Eyes {
+    transform: scaleY(1);
+    transform-box: content-box;
+    transform-origin: center;
 }
 
 #ears {
@@ -78,8 +85,9 @@ body {
     background-color: var(--color-lightGray);
     border-radius: 28px;
     border: 10px solid #f4f4f4;
-    box-shadow: 0px 10px 10px .5px rgba(0, 0, 0, .2);
+    /* box-shadow: 0px 10px 10px .5px rgba(0, 0, 0, .2); */
     margin-top: 185px;
+    margin-bottom: 5px;
     transition: all .2s ease;
     display: grid;
     justify-content: center;
@@ -90,13 +98,13 @@ body {
     height: 83px;
     width: 228px;
     margin: 13px auto 13px auto;
-    background-color: #ffffff;
+    background-color: var(--color-white);
     box-shadow: inset 0px 3px 7px 0.1px rgba(0, 0, 0, .4);
     border-radius: 15px;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
-    grid-area: screen; /*Identifier for the grid-template-area in the respectives Media Querries*/
+    grid-area: screen;
 }
 
 .screen input {
@@ -129,12 +137,16 @@ button {
     width: 55px;
     font-size: 25px;
     border: none;
-    box-shadow: 0px 1px 2px 0.5px rgba(0, 0, 0, .2);
     transition: background-color .2s ease;
+    cursor: pointer;
 }
 
 button:hover {
     background-color: rgba(0, 0, 0, .1);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 /* Generical Numerical Buttons style */
@@ -146,7 +158,7 @@ button:hover {
     justify-content: end;
     align-content: start;
     gap: 3px;
-    grid-area: numb; /*Identifier for the grid-template-area in the respectives Media Querries*/
+    grid-area: numb;
 }
 
 .number-buttons > button {
@@ -160,7 +172,7 @@ button:hover {
 }
 .number-buttons > button:active {
     background-color: rgba(0, 0, 0, .2);
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .25);
+    box-shadow: inset 0px 1px 5px 1px rgba(0, 0, 0, .25);
 }
 
 .number-buttons > button:nth-child(10) {
@@ -181,7 +193,7 @@ button:hover {
 }
 .calc-buttons > button:active {
     background-color: #1a1a1a;
-    box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, .2);
+    box-shadow: inset 0px 1px 5px 2px rgba(0, 0, 0, .25);
 }
 
 .calc-buttons.group1 {
@@ -193,7 +205,7 @@ button:hover {
     align-content: center;
     gap: 3px;
     align-self: center;
-    grid-area: cal1; /*Identifier for the grid-template-area in the respectives Media Querries*/
+    grid-area: cal1;
 }
 
 .calc-buttons.group1 > button:first-child {
@@ -213,7 +225,7 @@ button:hover {
     align-content: center;
     gap: 3px;
     align-self: top;
-    grid-area: cal2; /*Identifier for the grid-template-area in the respectives Media Querries*/
+    grid-area: cal2;
 }
 
 .calc-buttons.group2 > button:last-child {
@@ -231,6 +243,7 @@ button:hover {
 .calc-buttons.group1 > button:first-child:active {
     background-color: #c70000;
     box-shadow: 0px 1px 5px 1px rgba(255, 0, 0, 0.2);
+    box-shadow: inset 0px 1px 5px 1px rgb(65, 0, 0);
 }
 
 .extra {
@@ -241,25 +254,82 @@ button:hover {
     gap: 1px;
     align-self: top;
     justify-self: center;
-    grid-area: ext1; /*Identifier for the grid-template-area in the respectives Media Querries*/
+    grid-area: ext1;
 }
 
 .calc-buttons.group4 {
     gap: 1px;
     align-self: top;
     justify-self: center;
-    grid-area: ext2; /*Identifier for the grid-template-area in the respectives Media Querries*/
+    grid-area: ext2;
 }
 /* End of Calculation Buttons style */
 /* End of styling the Calculator */
 
+span {
+    z-index: 10;
+    float: right;
+    color: var(--color-contrast);
+    border: solid 3px var(--color-contrast);
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--color-lightGray);
+    transition: transform,color,background-color .2s ease;
+    transition: rotate 1s ease-in-out;
+}
+
+#settings {
+    font-size: 35px;
+    margin: 15px;
+    cursor: pointer;
+    position: absolute;
+}
+
+#rotate {
+    display: none;
+    font-size: 35px;
+    margin-top: 5px;
+    margin-bottom: -25px;
+    cursor: pointer;
+}
+
+#settings:hover, #rotate:hover, #settings:focus, #rotate:focus {
+    transform: scale(1.1);
+    rotate: 180deg;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, .2);
+}
+
+#settings:active, #rotate:active {
+    background-color: var(--color-contrast);
+    color: var(--color-contrast2);
+}
+
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 35px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, .3);
+}
+
+.settings-menu.active{
+    display: block;
+}
+
+.rotate-input {
+    display: none;
+}
 
 /* Why do software developers prefer the dark? Because the light attracts bugs! */
 
 
 /* Styles for mobile devices in portrait*/
 @media screen and (orientation: portrait) {
-
+    
     .calculator-base {
         height: 390px;
         width: 255px;    
@@ -269,6 +339,23 @@ button:hover {
         "screen screen screen screen"
         "cal1 cal1 cal1 cal1"
         "numb numb numb cal2"; 
+    }
+
+    #settings {
+        font-size: 28px;
+        border: solid 2px var(--color-contrast);
+    }
+
+    #rotate {
+        font-size: 28px;
+        border: solid 2px var(--color-contrast);
+        display: none;
+    }
+
+    @media screen and (max-height: 590px) {
+        .container {
+            padding-top: 50px;
+        }
     }
 }
 
@@ -290,8 +377,7 @@ button:hover {
     .calculator-base {
         height: 180px;
         width: 550px;
-        margin-top: 167px;
-        box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, .2);
+        margin-top: 180px;
         grid-template-columns: repeat(10, 55px);
         grid-template-rows: repeat(4, 45px);
         grid-template-areas: 
@@ -304,7 +390,7 @@ button:hover {
     .screen {
         height: 73px; /* 1,2 de proporção */
         width: 301px; /* 1,02 de proporção */
-        margin-top: 5px;
+        margin-top: 8px;
     }
 
     button {
@@ -314,7 +400,7 @@ button:hover {
     }
 
     .number-buttons {
-        margin: 0px;
+        margin: -2px 0px 0px 0px;
         flex-flow: row wrap;
         justify-content: center;
         align-content: top;
@@ -329,7 +415,7 @@ button:hover {
     }
 
     .calc-buttons.group1 {
-        margin: 0px 0px 0px 5px;
+        margin: 0px 0px 0px 3px;
         flex-flow: row wrap;
         justify-content: center;
         align-content: center;
@@ -360,7 +446,7 @@ button:hover {
     }
 
     .calc-buttons.group3 {
-        margin: 0px 0px 0px 5px;
+        margin: 0px 0px 0px 3px;
         flex-flow: row wrap;
         justify-content: center;
         align-content: center;
@@ -379,4 +465,111 @@ button:hover {
         justify-content: left;
         align-content: center;
     }
+
+    #settings {
+        font-size: 30px;
+        border: solid 2.5px var(--color-contrast);
+    }
+
+    #rotate {
+        font-size: 30px;
+        border: solid 2.5px var(--color-contrast);
+        display: none;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes blink {
+    0%, 40% {
+        transform: scaleY(1);
+    }
+    5% {
+        transform: scaleY(0.3);
+    }
+    10%, 20% {
+        transform: scaleY(0.1);
+    }
+}
+
+.blink--anim {
+    animation: blink 11.5s infinite;
+}
+
+@keyframes tapFace {
+    0% {
+        transform: translate(-22%, -25%);
+    }
+    2.5% {
+        transform: translate(-22%, -32%);
+    }
+    15% {
+        transform: translate(-22%, -31%);
+    }
+    23%, 36%, 48%, 60% {
+        transform: translate(-22%, -22%);
+    }
+    24%, 52% {
+        transform: translate(-19%, -22%);
+    }
+    32% {
+        transform: translate(-16%, -22%);
+    }
+    40%, 56% {
+        transform: translate(-25%, -22%);
+    }
+    44% {
+        transform: translate(-28%, -22%);
+    }
+}
+
+.tap-face--anim {
+    animation: tapFace 1.5s ease-in-out;
+}
+
+@keyframes tapEars {
+    0% {
+        transform: translate(-50%, -25%);
+    }
+    2.5% {
+        transform: translate(-50%, -32%);
+    }
+    15% {
+        transform: translate(-50%, -31%);
+    }
+    23%, 36%, 48%, 60% {
+        transform: translate(-50%, -22%);
+    }
+    24%, 52% {
+        transform: translate(-45%, -22%);
+    }
+    32% {
+        transform: translate(-49%, -22%);
+    }
+    40%, 56% {
+        transform: translate(-52%, -22%);
+    }
+    44% {
+        transform: translate(-54%, -22%);
+    }
+}
+
+.tap-ears--anim {
+    animation: tapEars 1.5s ease;
+}
+
+@keyframes tapBlink {
+    0%, 15% {
+        transform: scaleY(1);
+    }
+    1.5%, 24%, 62% {
+        transform: scaleY(0.3);
+    }
+    2.5%, 25%, 60% {
+        transform: scaleY(0.1);
+    }
+}
+
+.tap-blink--anim {
+    animation: tapBlink 1.5s ease-in-out;
 }
