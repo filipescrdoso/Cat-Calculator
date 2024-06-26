@@ -66,6 +66,7 @@ body {
 #CatFace {
     transform: translate(-22.5%, -17%);
     cursor: pointer;
+    transition: none;
 }
 
 #Eyes {
@@ -79,6 +80,7 @@ body {
     left: 50%;
     transform: translate(-50%, -25%);
     z-index: -1;
+    transition: none;
 }
 /* End of styling the Cat */
 
@@ -313,6 +315,8 @@ span {
     background-color: var(--settings-bg);
     height: 100%;
     width: 100%;
+    transform-origin: center;
+    animation: appear-bg 1s ease;
 }
 
 .settings-menu {
@@ -327,6 +331,7 @@ span {
     border-radius: 5px;
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, .3);
     text-align: center;
+    animation: appear-settings 1s ease;
 }
 
 .settings-menu h3 {
@@ -520,7 +525,35 @@ span {
 }
 
 /* ANIMATIONS */
+@keyframes appear-bg {
+    0% {
+        transform:scale(0%, 0%);
+    }
+    10% {
+        transform:scale(50%, 1%);
+    }
+    20% {
+        transform:scale(100%, 5%);
+    }
+    90%, 100% {
+        transform:scale(100%, 100%);
+    }
+}
 
+@keyframes appear-settings {
+    0%, 5% {
+        transform: translate(-50%, -70%);
+        opacity: 5%;
+    }
+    15% {
+        opacity: 70%;
+    }
+    50%, 100% {
+        opacity: 100%;
+    }
+}
+
+/*Sete Cat ANIMATIONS*/
 @keyframes blink {
     0%, 40% {
         transform: scaleY(1);

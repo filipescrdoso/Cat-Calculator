@@ -2,6 +2,12 @@ const catFace = document.getElementById("CatFace");
 const catEars = document.getElementById("ears");
 const catEyes = document.getElementById("Eyes")
 
+if(isMobile()){
+    //Function to make mobile devices have a more "fluid" experience
+    catFace.style.transition = `transform .5s ease-in-out`;
+    catEars.style.transition = `transform .5s ease-in-out`;
+}
+
 document.addEventListener('mousemove', () => {
     //Make the mouse position fit a range
     let xFace = mapValue(event.clientX, 0, window.innerWidth, -28, -16);
@@ -31,4 +37,11 @@ function playAnimation(element, animationClassName, delay) {
     setTimeout(function() {
         element.classList.remove(animationClassName);
     }, delay);
+}
+
+function isMobile() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isMobileUserAgent = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+    const isMobileWidth = window.innerWidth <= 800;
+    return isMobileUserAgent && isMobileWidth;
 }
