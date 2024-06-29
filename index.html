@@ -102,47 +102,47 @@
 
         <!-- Calculator start -->
         <div class="calculator-base portrait" id="calculator-base">
-            <!-- The "portrait" class above, is here to make possible rotate the calculator even in big device, like desktops. Switch between "portrait" or "landscape" -->
+            <!-- Switch between "portrait" or "landscape" -->
 
             <div class="screen">
-                <input type="text" value="1 + 1 = " readonly class="previousScreen" tabindex="-1">
-                <input type="number" value="0" readonly class="atualScreen" tabindex="-1">
+                <input type="text" readonly class="previousScreen" tabindex="-1" id="previousScreen">
+                <input type="text" value="0" readonly class="atualScreen" tabindex="-1" id="atualScreen">
             </div>
 
             <!-- Calculator Buttons -->
 
             <div class="number-buttons">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+/-</button>
-                <button>0</button>
-                <button>.</button>
+                <button onclick="numberButton('7');">7</button>
+                <button onclick="numberButton('8');">8</button>
+                <button onclick="numberButton('9');">9</button>
+                <button onclick="numberButton('4');">4</button>
+                <button onclick="numberButton('5');">5</button>
+                <button onclick="numberButton('6');">6</button>
+                <button onclick="numberButton('1');">1</button>
+                <button onclick="numberButton('2');">2</button>
+                <button onclick="numberButton('3');">3</button>
+                <button onclick="numberButton('+/-');">+/-</button>
+                <button onclick="numberButton('0');">0</button>
+                <button onclick="numberButton('.');">.</button>
             </div>
 
             <div class="calc-buttons group1">
-                <button>AC</button>
-                <button>&larr;</button>
+                <button onclick="cleanScreen()">AC</button>
+                <button onclick="backValue()">&larr;</button>
                 <button>%</button>
-                <button>&divide;</button>
+                <button onclick="operatorButton('÷')">÷</button>
             </div>
             
             <div class="calc-buttons group2">
-                <button>&times;</button>
-                <button>-</button>
-                <button>+</button>
-                <button>=</button>
+                <button onclick="operatorButton('×')">×</button>
+                <button onclick="operatorButton('-')">-</button>
+                <button onclick="operatorButton('+')">+</button>
+                <button onclick="result()">=</button>
             </div>
 
             <div class="calc-buttons group3 extra">
                 <button>&Sqrt;</button>
-                <button>&UpArrow;</button>
+                <button onclick="operatorButton('^')">^</button>
                 <button>sin</button>
                 <button>tan</button>
             </div>
@@ -162,6 +162,7 @@
     </span>
 
     <script src="scripts/index.js"></script>
+    <script src="scripts/calculator.js"></script>
     <script src="scripts/cat.js"></script>
 </body>
 </html>

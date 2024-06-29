@@ -4,8 +4,8 @@ const catEyes = document.getElementById("Eyes")
 
 if(isMobile()){
     //Function to make mobile devices have a more "fluid" experience
-    catFace.style.transition = `transform .5s ease-in-out`;
-    catEars.style.transition = `transform .5s ease-in-out`;
+    catFace.style.transition = `transform .25s ease-in-out`;
+    catEars.style.transition = `transform .25s ease-in-out`;
 }
 
 document.addEventListener('mousemove', () => {

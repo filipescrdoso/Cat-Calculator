@@ -1,0 +1,8 @@
+List of Mathematical Symbols (for reference in the code)
+
+-Plus = "+";
+-Minus = "-";
+-Times = "×";
+-Divide = "÷";
+-Equals = "=";
+-Exponent = "^";
