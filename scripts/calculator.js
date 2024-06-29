@@ -9,21 +9,20 @@ let secondValue;
 document.addEventListener('keydown', keyboardInput);
 
 function numberButton(element) {
+    //Function to add the characters to screen and firstValue
+
     if(secondValue != null) {
         cleanScreen();
     }
     
     if(element == '.'){
+        //Ensures that the value has only one floating point
         if(atualScreen.value.includes('.')) {
             return;
         }
-        else {
-            atualScreen.value += element;
-            runningValue = Number(atualScreen.value);
-        }
-        return;
     } 
     else if (element == '+/-') {
+        //Makes the value switch between negative and positive
         if(atualScreen.value.includes('-')) {
             atualScreen.value = atualScreen.value.substring(1)
         } else {
@@ -34,16 +33,16 @@ function numberButton(element) {
     }
     
     if(atualScreen.value === '0'){
+        //Removes the default "0" on first click
         atualScreen.value = null
     }
 
     atualScreen.value += element;
     runningValue = Number(atualScreen.value);
-
-    console.log(Number(runningValue));
 }
 
 function operatorButton(element) {
+    //Function that defines the operator of the next calculation
 
     if(runningOperator == null) {
         runningOperator = element;
@@ -54,6 +53,7 @@ function operatorButton(element) {
         previousScreen.value = `${firstValue} ${runningOperator} `;
     }
     else {
+        //Changes the previous runningOperator to a new one, keeping the result of the last operation as firstValue
         let lastValue = runningValue;
         cleanScreen();
         firstValue = lastValue;
@@ -64,7 +64,20 @@ function operatorButton(element) {
 
 }
 
+function complexOperators(element){
+    //Complex operations
+
+    if(element == '%') {
+        let result = (runningValue / 100) * firstValue;
+        runningValue = result;
+        previousScreen.value = `${firstValue} ${runningOperator} ${runningValue}`;
+        atualScreen = runningValue;
+    }
+}
+
 function result() {
+//Function that actually calculates the values
+
     if(runningOperator != null) {
         secondValue = runningValue;
         switch(runningOperator){
@@ -94,13 +107,12 @@ function result() {
                 previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
                 break;
         }
-    } 
-    else {
-        
     }
 }
 
 function backValue() {
+//Removes the last charactere of the runningValue
+
     const strValue = atualScreen.value;
 
     if(String(strValue.value).length){
@@ -119,6 +131,8 @@ function backValue() {
 }
 
 function cleanScreen() {
+//Fully cleans the screen
+
     firstValue = null;
     secondValue = null;
     runningOperator = null;
@@ -129,6 +143,8 @@ function cleanScreen() {
 }
 
 function keyboardInput(k) {
+//Makes the calculator works with keyboard inputs
+
     k.preventDefault();
 
     switch(k.key){

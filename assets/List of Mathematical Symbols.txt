@@ -6,3 +6,4 @@ List of Mathematical Symbols (for reference in the code)
 -Divide = "÷";
 -Equals = "=";
 -Exponent = "^";
+-Square Root = "√";

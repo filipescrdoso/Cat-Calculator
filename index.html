@@ -129,7 +129,7 @@
             <div class="calc-buttons group1">
                 <button onclick="cleanScreen()">AC</button>
                 <button onclick="backValue()">&larr;</button>
-                <button>%</button>
+                <button onclick="complexOperators('%')">%</button>
                 <button onclick="operatorButton('÷')">÷</button>
             </div>
             
@@ -141,7 +141,7 @@
             </div>
 
             <div class="calc-buttons group3 extra">
-                <button>&Sqrt;</button>
+                <button onclick="complexOperators('√')">√</button>
                 <button onclick="operatorButton('^')">^</button>
                 <button>sin</button>
                 <button>tan</button>
