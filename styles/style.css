@@ -124,7 +124,7 @@ body {
 
 .screen input.atualScreen {
     padding: 0%;
-    margin: -20px 5px 0px 5px;
+    margin: -20px 10px 0px 5px;
     text-indent: 0px;
     font-size: 35px;
     font-weight: 600;
@@ -270,7 +270,7 @@ button:active {
 /* End of Calculation Buttons style */
 /* End of styling the Calculator */
 
-span {
+span.material-symbols-outlined.config {
     z-index: 5;
     float: right;
     color: var(--color-contrast);
@@ -280,6 +280,11 @@ span {
     background-color: var(--color-lightGray);
     transition: transform,color,background-color .2s ease;
     transition: rotate 1s ease-in-out;
+}
+
+span.backspace {
+    margin: 7px 2px 0px 0px;
+    font-size: 30px;
 }
 
 #settings {

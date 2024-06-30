@@ -11,7 +11,7 @@
 </head>
 <body id="body">
 
-    <span class="material-symbols-outlined" id="settings" onclick="showSettings()">
+    <span class="material-symbols-outlined config" id="settings" onclick="showSettings()">
         settings
     </span>
 
@@ -128,7 +128,7 @@
 
             <div class="calc-buttons group1">
                 <button onclick="cleanScreen()">AC</button>
-                <button onclick="backValue()">&larr;</button>
+                <button onclick="backValue()"><span class="material-symbols-outlined backspace">backspace</span></button>
                 <button onclick="complexOperators('%')">%</button>
                 <button onclick="operatorButton('÷')">÷</button>
             </div>
@@ -143,21 +143,21 @@
             <div class="calc-buttons group3 extra">
                 <button onclick="complexOperators('√')">√</button>
                 <button onclick="operatorButton('^')">^</button>
-                <button>sin</button>
-                <button>tan</button>
+                <button onclick="complexOperators('sin')">sin</button>
+                <button onclick="complexOperators('tan')">tan</button>
             </div>
 
             <div class="calc-buttons group4 extra">
-                <button>&pi;</button>
-                <button>!</button>
-                <button>cos</button>
-                <button>log</button>
+                <button onclick="complexOperators('π')">π</button>
+                <button onclick="complexOperators('!')">!</button>
+                <button onclick="complexOperators('cos')">cos</button>
+                <button onclick="complexOperators('log')">log</button>
 
         </div>
         <!-- Calculator end -->
     </div>
 
-    <span class="material-symbols-outlined" id="rotate">
+    <span class="material-symbols-outlined config" id="rotate">
         cached
     </span>
 

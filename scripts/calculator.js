@@ -11,7 +11,7 @@ document.addEventListener('keydown', keyboardInput);
 function numberButton(element) {
     //Function to add the characters to screen and firstValue
 
-    if(secondValue != null) {
+    if(secondValue != null || atualScreen.value == 'Entrada Inválida') {
         cleanScreen();
     }
     
@@ -34,11 +34,13 @@ function numberButton(element) {
     
     if(atualScreen.value === '0'){
         //Removes the default "0" on first click
-        atualScreen.value = null
+        atualScreen.value = null;
     }
 
     atualScreen.value += element;
     runningValue = Number(atualScreen.value);
+
+    checkValue();
 }
 
 function operatorButton(element) {
@@ -66,13 +68,61 @@ function operatorButton(element) {
 
 function complexOperators(element){
     //Complex operations
-
-    if(element == '%') {
-        let result = (runningValue / 100) * firstValue;
-        runningValue = result;
-        previousScreen.value = `${firstValue} ${runningOperator} ${runningValue}`;
-        atualScreen = runningValue;
+    if(runningValue != null) {
+        if(element == '%') {
+            //Makes the percentage of the secondValue of firstValue
+            if(firstValue) {
+                let result = (runningValue / 100) * firstValue;
+                runningValue = result;
+                previousScreen.value = `${firstValue} ${runningOperator} ${runningValue}`;
+                atualScreen = runningValue;
+            } else {
+                cleanScreen();
+            }
+        }
+        else if(element == '√') {
+            //Gets the square root from runningValue
+            let result = Number(atualScreen.value);
+            runningValue = Math.sqrt(result);
+            atualScreen.value = runningValue;
+        }
+        else if(element == 'π') {
+            //runningValue gets Pi's value;
+            runningValue = Math.PI;
+            atualScreen.value = runningValue;
+        }
+        else if(element == '!') {
+            //Factors runningValue
+            let result = 1;
+            for (let i = 2; i <= Number(runningValue); i++) {
+                result *= i;
+            }
+            runningValue = result;
+            atualScreen.value = runningValue;
+        }
+        else if(element == 'sin') {
+            let rad = runningValue * (Math.PI / 180);
+            runningValue = Math.sin(rad);
+            atualScreen.value = runningValue;
+        }
+        else if(element == 'cos') {
+            let rad = runningValue * (Math.PI / 180);
+            runningValue = Math.cos(rad);
+            atualScreen.value = runningValue;
+        }
+        else if(element == 'tan') {
+            let rad = runningValue * (Math.PI / 180);
+            runningValue = Math.tan(rad);
+            atualScreen.value = runningValue;
+        }
+        else if(element == 'log') {
+            let result = Math.log(atualScreen.value);
+            runningValue = result
+            atualScreen.value = runningValue;
+        }  
     }
+
+    checkValue();
 }
 
 function result() {
@@ -83,31 +133,25 @@ function result() {
         switch(runningOperator){
             case '÷':
                 runningValue = firstValue / secondValue;
-                atualScreen.value = runningValue;
-                previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
                 break;
             case '×':
                 runningValue = firstValue * secondValue;
-                atualScreen.value = runningValue;
-                previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
                 break;
             case '+':
                 runningValue = firstValue + secondValue;
-                atualScreen.value = runningValue;
-                previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
                 break;
             case '-':
                 runningValue = firstValue - secondValue;
-                atualScreen.value = runningValue;
-                previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
                 break;
             case '^':
                 runningValue = firstValue ** secondValue;
-                atualScreen.value = runningValue;
-                previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
                 break;
         }
+        atualScreen.value = runningValue;
+        previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
     }
+
+    checkValue();
 }
 
 function backValue() {
@@ -128,6 +172,8 @@ function backValue() {
     }
 
     runningValue = Number(atualScreen.value);
+    atualScreen.value = runningValue;
+    checkValue();
 }
 
 function cleanScreen() {
@@ -140,6 +186,25 @@ function cleanScreen() {
 
     atualScreen.value = runningValue;
     previousScreen.value = '';
+
+    checkValue()
+}
+
+function checkValue() {
+    if(atualScreen.value == 'NaN') {
+        atualScreen.value = "Entrada Inválida";
+    }
+
+    //"Controls" the screen's font-size
+    if(atualScreen.value.length > 9 && atualScreen.value.length < 19) {
+        atualScreen.style = `font-size: 20px`;
+    }
+    else if(atualScreen.value.length >= 19) {
+        atualScreen.style = `font-size: 15px`;
+    }
+    else {
+        atualScreen.style = `font-size: 35px`;
+    }
 }
 
 function keyboardInput(k) {
@@ -180,6 +245,19 @@ function keyboardInput(k) {
         break;
         case '-': operatorButton(k.key);
         break;
+        case '%': complexOperators('%');
+        break;
+        case '!': complexOperators('!');
+        break;
+        case 's': complexOperators('sin');
+        break;
+        case 'c': complexOperators('cos');
+        break;
+        case 't': complexOperators('tan');
+        break;
+        case 'l': complexOperators('log');
+        break;
+        
         //Screen Inputs
         case 'Backspace' : backValue();
         break;
