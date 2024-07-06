@@ -48,6 +48,7 @@ function setDarkMode() {
 }
 
 function checkPage() {
+    //Verifies the data on local storage and set it's configurations on document
     if(localStorage.getItem('dark-mode') === 'true') {
         darkModeCheckbox.checked = true;
         body.classList.add('dark-mode');
@@ -63,7 +64,6 @@ function checkPage() {
     }
     else {
         rotateButtonCheckbox.checked = true;
-        rotateBtn.style.display = 'block'    
     }
 }
 
