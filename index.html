@@ -19,13 +19,14 @@
 
     <div class="settings-menu" id="settingsMenu">
         <h3>Configurações:</h3>
-        <div class="line"></div>
         <label for="dark-mode-input">Modo escuro:</label>
         <input type="checkbox" name="dark-mode-input" id="dark-mode-input" onclick="setDarkMode()"><br>
         <div class="rotate-input">
             <label for="rotate-button-check">Botão de Rotação:</label>
             <input type="checkbox" name="rotate-button-check" id="rotate-button-check" checked onclick="showRotate()"><br>
         </div>
+        <div class="line"></div>
+        <button id="reset" onclick="resetCalculator()">reset</button>
     </div>
 
     <div class="container">
