@@ -402,7 +402,7 @@ input[type="checkbox"]:checked {
     position: absolute;
     z-index: 10;
     left: 50%;
-    transform: translate(-50%, 15%);
+    transform: translate(-50%, 5%);
     background-color: white;
     padding: 15px 10px 10px 10px;
     border-radius: 5px;
@@ -418,7 +418,7 @@ input[type="checkbox"]:checked {
     padding: 0px 5px;
     width: auto;
     height: 30px;
-    margin: -4px 0px 5px 0px ;
+    margin: -6px 0px 3px 0px ;
     font-size: 17px;
     font-weight: 400;
     color: white;
@@ -446,7 +446,7 @@ input[type="checkbox"]:checked {
 }
 
 a {
-    font-size: 13px;
+    font-size: 12px;
     padding: 0px 0px 15px 0px;
     color: var(--color-contrast);
     text-decoration: none;
@@ -504,10 +504,6 @@ i{
         display: none;
     }
 
-    .container {
-        padding: 50px 0px;
-    }
-    
     .cat {
         transform: scale(.4);
     }
