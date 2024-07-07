@@ -101,18 +101,24 @@ function complexOperators(element){
             atualScreen.value = runningValue;
         }
         else if(element == 'sin') {
+            //Gets the sine in degrees of a number
             let rad = runningValue * (Math.PI / 180);
             runningValue = Math.sin(rad);
+            runningValue = checkFloat(runningValue);
             atualScreen.value = runningValue;
         }
         else if(element == 'cos') {
+            //Gets the cosine in degrees of a number
             let rad = runningValue * (Math.PI / 180);
             runningValue = Math.cos(rad);
+            runningValue = checkFloat(runningValue);
             atualScreen.value = runningValue;
         }
         else if(element == 'tan') {
+            //Gets the tangent in degrees of a number
             let rad = runningValue * (Math.PI / 180);
             runningValue = Math.tan(rad);
+            runningValue = checkFloat(runningValue);
             atualScreen.value = runningValue;
         }
         else if(element == 'log') {
@@ -147,6 +153,9 @@ function result() {
                 runningValue = firstValue ** secondValue;
                 break;
         }
+        
+        runningValue = checkFloat(runningValue);
+
         atualScreen.value = runningValue;
         previousScreen.value = `${firstValue} ${runningOperator} ${secondValue} = `;
     }
@@ -204,6 +213,18 @@ function checkValue() {
     }
     else {
         atualScreen.style = `font-size: 35px`;
+    }
+}
+
+function checkFloat(element) {
+//Rounds the "broken floats" from js to a fixed number
+    let strValue = String(element);
+
+    if(strValue.includes('.') && strValue.length >= 5) {
+        return Number(element.toFixed(10));
+    }
+    else {
+        return element;
     }
 }
 

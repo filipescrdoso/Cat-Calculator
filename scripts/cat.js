@@ -1,11 +1,19 @@
 const catFace = document.getElementById("CatFace");
 const catEars = document.getElementById("ears");
-const catEyes = document.getElementById("Eyes")
+const catEyes = document.getElementById("Eyes");
 
 if(isMobile()){
     //Function to make mobile devices have a more "fluid" experience
     catFace.style.transition = `transform .25s ease-in-out`;
     catEars.style.transition = `transform .25s ease-in-out`;
+
+    //If it's the user's first visit on a mobile device, it shows a notification
+    if (localStorage.getItem('visited') === null) {
+        callNotification("Tente rotacionar o seu dispositivo :)")
+        localStorage.setItem('visited', 'true');
+    } else {
+        console.log("Bem-vindo de volta!");
+    }
 }
 
 document.addEventListener('mousemove', () => {
@@ -26,8 +34,8 @@ catFace.addEventListener('click', () => {
     playAnimation(catEyes, 'tap-blink--anim', 2000);
 })
 
-//function to make a number fit within some range
 function mapValue(value, minSource, maxSource, minTarget, maxTarget) {
+    //function to make a number fit within some range
     return minTarget + ((value - minSource) * (maxTarget - minTarget) / (maxSource - minSource));
 }
 

@@ -1,5 +1,5 @@
-const body = document.getElementById('body');
-const calcBase = document.getElementById('calculator-base');
+const body = document.getElementById("body");
+const calcBase = document.getElementById("calculator-base");
 const settingsBtn = document.getElementById("settings");
 const settingsMenu = document.getElementById("settingsMenu");
 const settingsMenuBG = document.getElementById("settingsMenuBG");
@@ -7,6 +7,8 @@ const rotateBtn = document.getElementById("rotate");
 
 const darkModeCheckbox = document.getElementById("dark-mode-input");
 const rotateButtonCheckbox = document.getElementById("rotate-button-check");
+
+const notification = document.getElementById("notification");
 
 checkPage();
 
@@ -71,4 +73,15 @@ function resetCalculator() {
     localStorage.clear();
     sessionStorage.clear();
     location.reload();
+}
+
+function callNotification(text) {
+    const textNotification = document.getElementById("textNotification");
+
+    textNotification.innerHTML = text;
+    notification.style.display = 'block';
+}
+
+function closeNotification(e) {
+    notification.style.display = 'none';
 }
